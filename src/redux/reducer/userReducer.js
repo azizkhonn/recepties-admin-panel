@@ -1,4 +1,4 @@
-import { ADD_TO_TODAY_MENU } from '../actions/types';
+import { ADD_TO_TODAY_MENU, REMOVE_FROM_TODAY_MENU } from '../actions/types';
 
 const initialState = {
   todayMenu: [],
@@ -9,9 +9,13 @@ const todayMenuReducer = (state = initialState, action) => {
     case ADD_TO_TODAY_MENU:
       return {
         ...state,
-        todayMenu: [...state.todayMenu, action.payload],
+        todayMenu: [...state.todayMenu, { ...action.payload, key: action.payload.id }],
       };
-    // Handle other actions if needed
+    case REMOVE_FROM_TODAY_MENU:
+      return {
+        ...state,
+        todayMenu: state.todayMenu.filter((item) => item.key !== action.payload),
+      };
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import { Table, Button, message } from 'antd';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from '../api/axios';
-import { addToTodayMenu } from '../redux/actions/types'; // Adjust the import path as needed
+import { addToTodayMenu } from '../redux/actions/types';
 
 const MainTable = () => {
   const [loading, setLoading] = useState(true);
@@ -26,6 +26,7 @@ const MainTable = () => {
 
   const handleAddToTodayMenu = (record) => {
     dispatch(addToTodayMenu(record));
+    message.success('Added to Today\'s Menu');
   };
 
   const columns = [

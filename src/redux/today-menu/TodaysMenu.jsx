@@ -1,14 +1,12 @@
-// src/routes/today-menu/TodayMenu.jsx
-
 import { Table, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromTodayMenu } from '../../redux/actions/types'; // Adjust the import path as needed
+import { removeFromTodayMenu } from '../actions/types'; // adjust import path as needed
 
 const TodayMenu = () => {
   const todayMenu = useSelector((state) => state.todayMenu.todayMenu);
   const dispatch = useDispatch();
 
-  const handleRemoveFromTodayMenu = (key) => {
+  const handleRemove = (key) => {
     dispatch(removeFromTodayMenu(key));
   };
 
@@ -34,7 +32,7 @@ const TodayMenu = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <Button onClick={() => handleRemoveFromTodayMenu(record.key)}>Delete</Button>
+        <Button onClick={() => handleRemove(record.key)}>Delete</Button>
       ),
     },
   ];

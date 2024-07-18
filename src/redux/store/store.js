@@ -1,6 +1,10 @@
-import { legacy_createStore } from "redux";
-import reducer from "../reducer/userReducer";
+import { configureStore } from '@reduxjs/toolkit';
+import todayMenuReducer from '../reducer/userReducer';
 
-const store = legacy_createStore(reducer);
+const store = configureStore({
+  reducer: {
+    todayMenu: todayMenuReducer,
+  },
+});
 
-export default store
+export default store;

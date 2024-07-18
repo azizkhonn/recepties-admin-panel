@@ -1,10 +1,13 @@
-/* eslint-disable react/jsx-no-undef */
-// ../routes/admin/Home.js
-
 import { useState } from 'react';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UsergroupAddOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
 import { Button, Layout, Menu, Input } from 'antd';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import MainTable from '../../components/MainTable'; 
+import MainTable from '../../components/MainTable';
 
 const { Header, Sider, Content } = Layout;
 const { Search } = Input;
@@ -13,7 +16,7 @@ function Home() {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
 
-  const onSearch = () => {};
+  const onSearch = () => { };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -24,10 +27,12 @@ function Home() {
           items={[
             {
               key: '1',
+              icon: <UsergroupAddOutlined />,
               label: <NavLink className="sidebar__link" to="/admin/today-menu">Today Menu</NavLink>,
             },
             {
               key: '2',
+              icon: <VideoCameraOutlined />,
               label: <NavLink className="sidebar__link" to="/admin/menu">Menu</NavLink>,
             },
           ]}
@@ -37,7 +42,7 @@ function Home() {
         <Header style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingLeft: '0' }}>
           <Button
             type="text"
-           
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
             style={{
               fontSize: '16px',
