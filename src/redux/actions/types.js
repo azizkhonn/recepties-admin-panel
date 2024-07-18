@@ -1,3 +1,5 @@
+// src/redux/actions/types.js
+
 export const ADD_TO_TODAY_MENU = 'ADD_TO_TODAY_MENU';
 export const REMOVE_FROM_TODAY_MENU = 'REMOVE_FROM_TODAY_MENU';
 
@@ -6,7 +8,7 @@ export const addToTodayMenu = (recipe) => ({
   payload: recipe,
 });
 
-export const removeFromTodayMenu = (id) => ({
+export const removeFromTodayMenu = (key) => ({
   type: REMOVE_FROM_TODAY_MENU,
-  payload: id,
+  payload: key,
 });

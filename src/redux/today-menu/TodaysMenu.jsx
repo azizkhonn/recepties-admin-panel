@@ -1,6 +1,8 @@
+// src/routes/today-menu/TodayMenu.jsx
+
 import { Table, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromTodayMenu } from '../actions/types';
+import { removeFromTodayMenu } from '../../redux/actions/types'; // Adjust the import path as needed
 
 const TodayMenu = () => {
   const todayMenu = useSelector((state) => state.todayMenu.todayMenu);
