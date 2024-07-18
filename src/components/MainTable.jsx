@@ -1,4 +1,4 @@
-import { Table, Button, message, notification } from 'antd'; // Import notification from 'antd'
+import { Table, Button, message } from 'antd';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from '../api/axios';
@@ -26,14 +26,6 @@ const MainTable = () => {
 
   const handleAddToTodayMenu = (record) => {
     dispatch(addToTodayMenu(record));
-    showNotification(record.name); // Call showNotification when item is added
-  };
-
-  const showNotification = (itemName) => {
-    notification.success({
-      message: 'Item Added',
-      description: `${itemName} has been added to Today's Menu.`,
-    });
   };
 
   const columns = [

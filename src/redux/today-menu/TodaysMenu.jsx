@@ -1,6 +1,6 @@
 import { Table, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromTodayMenu } from '../../redux/actions/types'; // Adjust the import path as needed
+import { removeFromTodayMenu } from '../actions/types';
 
 const TodayMenu = () => {
   const todayMenu = useSelector((state) => state.todayMenu.todayMenu);
