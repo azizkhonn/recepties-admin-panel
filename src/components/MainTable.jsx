@@ -1,6 +1,6 @@
 import { Table, Button, message } from 'antd';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from '../api/axios';
 import { addToTodayMenu } from '../redux/actions/types';
 
@@ -8,6 +8,7 @@ const MainTable = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const todayMenu = useSelector((state) => state.todayMenu.todayMenu);
 
   useEffect(() => {
     fetchData();
@@ -25,8 +26,13 @@ const MainTable = () => {
   };
 
   const handleAddToTodayMenu = (record) => {
-    dispatch(addToTodayMenu(record));
-    message.success('Added to Today\'s Menu');
+    const isAlreadyAdded = todayMenu.some((dish) => dish.id === record.id);
+    if (isAlreadyAdded) {
+      message.warning('This dish is already in Today\'s Menu');
+    } else {
+      dispatch(addToTodayMenu(record));
+      message.success('Added to Today\'s Menu');
+    }
   };
 
   const columns = [
@@ -51,7 +57,7 @@ const MainTable = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <Button onClick={() => handleAddToTodayMenu(record)}>Add to Todays Menu</Button>
+        <Button onClick={() => handleAddToTodayMenu(record)}>Add to Today`s Menu</Button>
       ),
     },
   ];

@@ -1,4 +1,5 @@
-import { Table, Button } from 'antd';
+/* eslint-disable no-unused-vars */
+import { Table, Button, theme } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromTodayMenu } from '../actions/types'; // adjust import path as needed
 
@@ -32,7 +33,13 @@ const TodayMenu = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <Button onClick={() => handleRemove(record.key)}>Delete</Button>
+        <Button
+          className='btn_delete'
+          onClick={() => handleRemove(record.key)}
+          style={{ backgroundColor: 'red', borderColor: 'red', color: 'white' }}
+        >
+          Delete
+        </Button>
       ),
     },
   ];

@@ -7,6 +7,9 @@ const initialState = {
 const todayMenuReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_TODAY_MENU:
+      if (state.todayMenu.some(item => item.id === action.payload.id)) {
+        return state; // Return the state unchanged if the item already exists
+      }
       return {
         ...state,
         todayMenu: [...state.todayMenu, { ...action.payload, key: action.payload.id }],
